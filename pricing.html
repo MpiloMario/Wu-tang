@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Uhlelolwenkosi Catering</title>
+    <meta name="description" content="Transparent pricing packages for catering services in Pretoria. Packages for 20-100+ guests.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fdf9f0',
+                            100: '#fbf0d9',
+                            200: '#f6e0b3',
+                            300: '#edc67a',
+                            400: '#e3a947',
+                            500: '#d4902a',
+                            600: '#b87620',
+                            700: '#945c1d',
+                            800: '#7a4d1e',
+                            900: '#653f1b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .pricing-hero {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('http://static.photos/event/1200x630/66');
+            background-size: cover;
+            background-position: center;
+        }
+        .price-card {
+            transition: all 0.3s ease;
+        }
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+        .popular-badge {
+            background: linear-gradient(135deg, #d4902a 0%, #b87620 100%);
+        }
+        .check-icon {
+            color: #d4902a;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-stone-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i data-lucide="utensils" class="h-8 w-8 text-gold-600"></i>
+                        <span class="font-serif text-2xl font-bold text-gray-900">Uhlelolwenkosi</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-gold-700 transition">Home</a>
+                    <a href="menu.html" class="text-gray-700 hover:text-gold-700 transition">Menu</a>
+                    <a href="pricing.html" class="text-gold-700 font-medium border-b-2 border-gold-600">Pricing</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-gold-700 transition">Gallery</a>
+                    <a href="contact.html" class="bg-gold-600 text-white px-6 py-2 rounded-full hover:bg-gold-700 transition shadow-lg">Contact Us</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-gold-700 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Home</a>
+                <a href="menu.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Menu</a>
+                <a href="pricing.html" class="block px-3 py-2 text-gold-700 font-medium bg-gold-50 rounded-md">Pricing</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Gallery</a>
+                <a href="contact.html" class="block px-3 py-2 text-gold-700 font-medium">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <p class="text-gold-300 text-lg mb-4 font-medium tracking

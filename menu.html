@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | Uhlelolwenkosi Catering</title>
+    <meta name="description" content="Explore our exquisite catering menu featuring starters, main courses, desserts, and beverages for your next event in Pretoria.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fdf9f0',
+                            100: '#fbf0d9',
+                            200: '#f6e0b3',
+                            300: '#edc67a',
+                            400: '#e3a947',
+                            500: '#d4902a',
+                            600: '#b87620',
+                            700: '#945c1d',
+                            800: '#7a4d1e',
+                            900: '#653f1b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .menu-hero {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('http://static.photos/food/1200x630/55');
+            background-size: cover;
+            background-position: center;
+        }
+        .dietary-badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        .tab-active {
+            border-bottom: 3px solid #d4902a;
+            color: #d4902a;
+        }
+        .menu-item {
+            transition: all 0.3s ease;
+        }
+        .menu-item:hover {
+            background-color: #fdf9f0;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-stone-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i data-lucide="utensils" class="h-8 w-8 text-gold-600"></i>
+                        <span class="font-serif text-2xl font-bold text-gray-900">Uhlelolwenkosi</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-gold-700 transition">Home</a>
+                    <a href="menu.html" class="text-gold-700 font-medium border-b-2 border-gold-600">Menu</a>
+                    <a href="pricing.html" class="text-gray-700 hover:text-gold-700 transition">Pricing</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-gold-700 transition">Gallery</a>
+                    <a href="contact.html" class="bg-gold-600 text-white px-6 py-2 rounded-full hover:bg-gold-700 transition shadow-lg">Contact Us</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-gold-700 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Home</a>
+                <a href="menu.html" class="block px-3 py-2 text-gold-700 font-medium bg-gold-50 rounded-md">Menu</a>
+                <a href="pricing.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Pricing</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Gallery</a>
+                <a href="contact.html" class="block px-3 py-2 text-gold-700 font-medium">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="menu-hero pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <p class="text-gold-300 text-lg mb-4 font-medium tracking-widest uppercase">Culinary Excellence</p>
+            <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6">Our Menu</h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+                From elegant starters to decadent desserts, explore our carefully curated selection of dishes designed to impress your guests.
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu Navigation -->
+    <div class="sticky top-20 bg-white shadow-md z-40">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex overflow-x-auto space-x-8 py-4 no-scrollbar" id="menu-tabs">
+                <button onclick="showCategory('starters')" class="menu-tab tab-active whitespace-nowrap font-semibold pb-2 transition" data-category="starters">Starters</button>
+                <button onclick="showCategory('mains')" class="menu-tab whitespace-nowrap text-gray-600 hover:text-gold-700 font-semibold pb-2 transition" data-category="mains">Main Courses</button>
+                <button onclick="showCategory('desserts')" class="menu-tab whitespace-nowrap text-gray-600 hover:text-gold-700 font-semibold pb-2 transition" data-category="desserts">Desserts</button>
+                <button onclick="showCategory('beverages')" class="menu-tab whitespace-nowrap text-gray-600 hover:text-gold-700 font-semibold pb-2 transition" data-category="beverages">Beverages</button>
+                <button onclick="showCategory('traditional')" class="menu-tab whitespace-nowrap text-gray-600 hover:text-gold-700 font-semibold pb-2 transition" data-category="traditional">Traditional Favorites</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Content -->
+    <section class="py-16 bg-stone-50 min-h-screen">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Starters -->
+            <div id="starters" class="menu-category">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Starters & Appetizers</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Begin your culinary journey with our selection of elegant starters, perfect for setting the tone of your event.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Item 1 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/101" alt="Bruschetta" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Bruschetta Trio</h3>
+                                <span class="text-gold-600 font-bold">R45</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Fresh tomato basil, mushroom truffle, and olive tapenade on toasted ciabatta.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">GF Option</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/102" alt="Spring Rolls" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Thai Spring Rolls</h3>
+                                <span class="text-gold-600 font-bold">R52</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Crispy vegetable rolls served with sweet chili dipping sauce and lime.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                                <span class="dietary-badge bg-blue-100 text-blue-800">VG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/103" alt="Carpaccio" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Beef Carpaccio</h3>
+                                <span class="text-gold-600 font-bold">R68</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Thinly sliced beef fillet with rocket, parmesan shavings, and truffle oil.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/104" alt="Soup" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Roasted Butternut Soup</h3>
+                                <span class="text-gold-600 font-bold">R48</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Creamy butternut soup with toasted pumpkin seeds and herb croutons.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">GF Option</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/105" alt="Calamari" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Salt & Pepper Calamari</h3>
+                                <span class="text-gold-600 font-bold">R72</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Tender calamari tubes with garlic aioli and lemon wedges.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/106" alt="Caprese" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Caprese Skewers</h3>
+                                <span class="text-gold-600 font-bold">R42</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Cherry tomatoes, mozzarella balls, and fresh basil with balsamic glaze.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div id="mains" class="menu-category hidden">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Main Courses</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Substantial and satisfying, our main courses showcase the finest ingredients and culinary techniques.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/201" alt="Beef Fillet" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Beef Fillet with Red Wine Jus</h3>
+                                <span class="text-gold-600 font-bold">R185</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">250g grass-fed fillet, roasted vegetables, and creamy mashed potatoes.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/202" alt="Chicken" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Herb-Crusted Chicken</h3>
+                                <span class="text-gold-600 font-bold">R145</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Free-range chicken breast with rosemary potatoes and seasonal greens.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/203" alt="Salmon" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Pan-Seared Salmon</h3>
+                                <span class="text-gold-600 font-bold">R165</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Atlantic salmon with lemon butter sauce, asparagus, and wild rice.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/204" alt="Lamb" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Rack of Lamb</h3>
+                                <span class="text-gold-600 font-bold">R195</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">New Zealand lamb with mint pesto, fondant potatoes, and glazed carrots.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/205" alt="Pasta" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Mushroom Risotto</h3>
+                                <span class="text-gold-600 font-bold">R125</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Arborio rice with wild mushrooms, parmesan, and truffle oil.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">GF Option</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/206" alt="Curry" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Butter Chicken Curry</h3>
+                                <span class="text-gold-600 font-bold">R135</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Tender chicken in rich tomato curry sauce with naan bread and basmati rice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div id="desserts" class="menu-category hidden">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Desserts</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">End your meal on a sweet note with our decadent dessert selection.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/301" alt="Chocolate Cake" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Dark Chocolate Fondant</h3>
+                                <span class="text-gold-600 font-bold">R75</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Molten center chocolate cake with vanilla bean ice cream.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">V</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/302" alt="Cheesecake" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">New York Cheesecake</h3>
+                                <span class="text-gold-600 font-bold">R68</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Creamy cheesecake with berry compote and fresh mint.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">V</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/303" alt="Malva" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Malva Pudding</h3>
+                                <span class="text-gold-600 font-bold">R58</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Traditional South African dessert with warm custard sauce.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">V</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/304" alt="Fruit Tart" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Seasonal Fruit Tart</h3>
+                                <span class="text-gold-600 font-bold">R62</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Pastry cream filled tart with fresh seasonal fruits and glaze.</p>
+                            <div class="flex gap-2">
+                                <span class="dietary-badge bg-yellow-100 text-yellow-800">V</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div id="beverages" class="menu-category hidden">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Beverages</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Refreshing drinks and premium beverages to complement your meal.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/drink/200x200/401" alt="Juice" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Fresh Fruit Juices</h3>
+                                <span class="text-gold-600 font-bold">R35</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Orange, apple, or seasonal blend. Served chilled.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/drink/200x200/402" alt="Coffee" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Gourmet Coffee & Tea</h3>
+                                <span class="text-gold-600 font-bold">R28</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Selection of premium coffees and herbal teas.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/drink/200x200/403" alt="Wine" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">House Wine Selection</h3>
+                                <span class="text-gold-600 font-bold">R55/glass</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Red, white, or rosé from local vineyards.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/drink/200x200/404" alt="Champagne" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Sparkling Wine</h3>
+                                <span class="text-gold-600 font-bold">R85/glass</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">South African MCC or imported champagne.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Traditional -->
+            <div id="traditional" class="menu-category hidden">
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl font-bold text-gray-900 mb-4">Traditional Favorites</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Authentic South African dishes that celebrate our rich culinary heritage.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/501" alt="Braai" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Traditional Braai Platter</h3>
+                                <span class="text-gold-600 font-bold">R165</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Boerewors, lamb chops, chicken sosaties, pap, and chakalaka.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/502" alt="Bobotie" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Cape Malay Bobotie</h3>
+                                <span class="text-gold-600 font-bold">R135</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Spiced minced lamb with egg custard topping, yellow rice, and sambals.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/503" alt="Potjie" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Oxtail Potjie</h3>
+                                <span class="text-gold-600 font-bold">R175</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Slow-cooked oxtail with vegetables and red wine, served with samp.</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-item bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex gap-4">
+                        <img src="http://static.photos/food/200x200/504" alt="Bunny Chow" class="w-24 h-24 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-serif text-xl font-bold text-gray-900">Lamb Bunny Chow</h3>
+                                <span class="text-gold-600 font-bold">R125</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3">Hollowed bread loaf filled with aromatic lamb curry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dietary Legend -->
+            <div class="mt-12 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h4 class="font-serif text-lg font-bold mb-4">Dietary Information</h4>
+                <div class="flex flex-wrap gap-4 text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="dietary-badge bg-green-100 text-green-800">V</span>
+                        <span class="text-gray-600">Vegetarian</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="dietary-badge bg-blue-100 text-blue-800">VG</span>
+                        <span class="text-gray-600">Vegan</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="dietary-badge bg-red-100 text-red-800">GF</span>
+                        <span class="text-gray-600">Gluten-Free</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="dietary-badge bg-yellow-100 text-yellow-800">GF Option</span>
+                        <span class="text-gray-600">Gluten-Free Option Available</span>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-sm mt-4">* All prices are per person. Menu items subject to seasonal availability. Please inform us of any allergies or dietary requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gold-900">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-6">Custom Menu Options Available</h2>
+            <p class="text-gold-100 text-lg mb-8">
+                Don't see what you're looking for? We create custom menus tailored to your event theme and dietary requirements.
+            </p>
+            <a href="contact.html" class="inline-block bg-white text-gold-900 px-8 py-4 rounded-full font-bold hover:bg-gold-50 transition shadow-xl">
+                Request Custom Menu
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i data-lucide="utensils" class="h-8 w-8 text-gold-500"></i>
+                        <span class="font-serif text-2xl font-bold">Uhlelolwenkosi</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Premium catering services in Pretoria.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold-600 transition">
+                            <i data-lucide="facebook" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold-600 transition">
+                            <i data-lucide="instagram" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-serif text-xl font-bold mb-6 text-gold-500">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Menu</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-serif text-xl font-bold mb-6 text-gold-500">Contact</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="phone" class="h-5 w-5 text-gold-500"></i>
+                            <span class="text-gray-400">+27 12 345 6789</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-gold-500"></i>
+                            <span class="text-gray-400">info@uhlelolwenkosi.co.za</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                © 2026 Uhlelolwenkosi Catering. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        function showCategory(category) {
+            // Hide all categories
+            document.querySelectorAll('.menu-category').forEach(cat => {
+                cat.classList.add('hidden');
+            });
+            
+            // Show selected
+            document.getElementById(category).classList.remove('hidden');
+            
+            // Update tabs
+            document.querySelectorAll('.menu-tab').forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('text-gray-600');
+                tab.classList.remove('text-gold-700');
+            });
+            
+            // Activate current tab
+            const activeTab = document.querySelector(`[data-category="${category}"]`);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('text-gray-600');
+        }
+    </script>
+</body>
+</html>
