@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Uhlelolwenkosi Catering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0a192f',
+                            800: '#112240',
+                            700: '#233554',
+                            600: '#1e3a8a',
+                            500: '#1e40af',
+                            400: '#3b82f6',
+                        },
+                        royal: {
+                            500: '#4169e1',
+                            400: '#5c7cfa',
+                            300: '#748ffc',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-slate-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-lg z-50 border-b border-navy-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <i data-lucide="utensils" class="h-8 w-8 text-navy-600"></i>
+                    <div>
+                        <h1 class="font-serif text-2xl font-bold text-navy-900">Uhlelolwenkosi</h1>
+                        <p class="text-xs text-navy-600 tracking-widest uppercase">Catering</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Home</a>
+                    <a href="index.html#about" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">About</a>
+                    <a href="menu.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Menu</a>
+                    <a href="gallery.html" class="text-navy-800 hover:text-royal-500 font-medium transition-colors border-b-2 border-royal-500">Gallery</a>
+                    <a href="pricing.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Pricing</a>
+                    <a href="contact.html" class="bg-navy-800 text-white px-6 py-2 rounded-full hover:bg-royal-500 transition-all transform hover:scale-105 font-medium">Contact Us</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-navy-800 hover:text-royal-500 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Home</a>
+                <a href="index.html#about" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">About</a>
+                <a href="menu.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Menu</a>
+                <a href="gallery.html" class="block px-3 py-2 text-navy-800 font-medium bg-navy-50 rounded-md">Gallery</a>
+                <a href="pricing.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Pricing</a>
+                <a href="contact.html" class="block px-3 py-2 text-royal-500 font-medium">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <span class="text-royal-400 font-semibold tracking-widest uppercase text-sm">Our Portfolio</span>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mt-4">Gallery</h1>
+            <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Explore our culinary creations and event setups</p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <!-- Gallery Item 1 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/plate.jpg" alt="Gourmet Dish" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Gourmet Plating</h3>
+                        <p class="text-gray-300 text-sm">Wedding Reception</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/corp.jpg" alt="Event Setup" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Elegant Setup</h3>
+                        <p class="text-gray-300 text-sm">Corporate Event</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/gallery2.jpeg" alt="Wedding Table" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Buffet Service</h3>
+                        <p class="text-gray-300 text-sm">Indoor Reception</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 4 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/gallery4.jpeg" alt="Dessert Table" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Dining Table</h3>
+                        <p class="text-gray-300 text-sm">Fine table decor</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 5 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/gallery1.jpeg" alt="Buffet Line" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Meat platter</h3>
+                        <p class="text-gray-300 text-sm">Meat Feastive</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/pr.jpg" alt="Appetizers" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Table decor</h3>
+                        <p class="text-gray-300 text-sm">Fine Dining Setup</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 7 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/dm.jpg" alt="Table Setting" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Main Course</h3>
+                        <p class="text-gray-300 text-sm">Traditional feast</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 8 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/br.jpg" alt="Main Course" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Breakfast</h3>
+                        <p class="text-gray-300 text-sm">Traditional English breakfast</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Item 9 -->
+            <div class="gallery-item relative group cursor-pointer overflow-hidden rounded-xl" onclick="openLightbox(this)">
+                <img src="images/fruit.jpg" alt="Chef Plating" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                        <h3 class="text-white font-serif text-xl">Starter</h3>
+                        <p class="text-gray-300 text-sm">Fruit platter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 text-white hover:text-royal-400 z-50">
+            <i data-lucide="x" class="h-8 w-8"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+
+    <!-- Footer -->
+<footer class="bg-navy-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <i data-lucide="utensils" class="h-8 w-8 text-royal-500"></i>
+                    <span class="font-serif text-2xl font-bold">Uhlelolwenkosi</span>
+                </div>
+                <p class="text-gray-300 mb-6">Premium catering services in Pretoria.</p>
+
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-navy-800 rounded-full flex items-center justify-center hover:bg-navy-600 transition">
+                        <i data-lucide="facebook" class="h-5 w-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-navy-800 rounded-full flex items-center justify-center hover:bg-navy-600 transition">
+                        <i data-lucide="instagram" class="h-5 w-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-xl font-bold mb-6 text-royal-500">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                    <li><a href="menu.html" class="text-gray-300 hover:text-white transition">Menu</a></li>
+                    <li><a href="gallery.html" class="text-gray-300 hover:text-white transition">Gallery</a></li>
+                    <li><a href="pricing.html" class="text-gray-300 hover:text-white transition">Pricing</a></li>
+                    <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-xl font-bold mb-6 text-royal-500">Contact</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="phone" class="h-5 w-5 text-royal-500"></i>
+                        <span class="text-gray-300">+27 12 345 6789</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i data-lucide="mail" class="h-5 w-5 text-royal-500"></i>
+                        <span class="text-gray-300">info@uhlelolwenkosi.co.za</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="border-t border-navy-700 pt-8 text-center text-gray-400 text-sm">
+            © 2026 Uhlelolwenkosi Catering. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>

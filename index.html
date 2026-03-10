@@ -18,20 +18,21 @@
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Inter', 'sans-serif'],
                     },
-            colors: {
-                gold: {
-                    50:  '#f2f6ff',
-                    100: '#dbe7ff',
-                    200: '#b7ccff',
-                    300: '#85a6ff',
-                    400: '#4f7dff',
-                    500: '#2f5cff',
-                    600: '#1f47e6',
-                    700: '#1938b4',
-                    800: '#172f8a',
-                    900: '#16296e',
-                }
-                }
+                    colors: {
+                        navy: {
+                            900: '#0a192f',
+                            800: '#112240',
+                            700: '#233554',
+                            600: '#1e3a8a',
+                            500: '#1e40af',
+                            400: '#3b82f6',
+                        },
+                        royal: {
+                            500: '#4169e1',
+                            400: '#5c7cfa',
+                            300: '#748ffc',
+                        }
+                    }
                 }
             }
         }
@@ -71,28 +72,30 @@
 <body class="font-sans text-gray-800 bg-stone-50">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-lg z-50 border-b border-navy-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <i data-lucide="utensils" class="h-8 w-8 text-gold-600"></i>
-                        <span class="font-serif text-2xl font-bold text-gray-900">Uhlelolwenkosi</span>
-                    </a>
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <i data-lucide="utensils" class="h-8 w-8 text-navy-600"></i>
+                    <div>
+                        <h1 class="font-serif text-2xl font-bold text-navy-900">Uhlelolwenkosi</h1>
+                        <p class="text-xs text-navy-600 tracking-widest uppercase">Catering</p>
+                    </div>
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gold-700 font-medium hover:text-gold-900 transition">Home</a>
-                    <a href="menu.html" class="text-gray-700 hover:text-gold-700 transition">Menu</a>
-                    <a href="pricing.html" class="text-gray-700 hover:text-gold-700 transition">Pricing</a>
-                    <a href="gallery.html" class="text-gray-700 hover:text-gold-700 transition">Gallery</a>
-                    <a href="contact.html" class="bg-gold-600 text-white px-6 py-2 rounded-full hover:bg-gold-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Contact Us</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-navy-800 hover:text-royal-500 font-medium transition-colors border-b-2 border-royal-500">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">About</a>
+                    <a href="menu.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Menu</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Gallery</a>
+                    <a href="pricing.html" class="text-gray-600 hover:text-royal-500 font-medium transition-colors">Pricing</a>
+                    <a href="contact.html" class="bg-navy-800 text-white px-6 py-2 rounded-full hover:bg-royal-500 transition-all transform hover:scale-105 font-medium">Contact Us</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-gold-700 focus:outline-none">
+                    <button onclick="toggleMobileMenu()" class="text-navy-800 hover:text-royal-500 focus:outline-none">
                         <i data-lucide="menu" class="h-6 w-6"></i>
                     </button>
                 </div>
@@ -100,13 +103,14 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="index.html" class="block px-3 py-2 text-gold-700 font-medium bg-gold-50 rounded-md">Home</a>
-                <a href="menu.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Menu</a>
-                <a href="pricing.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Pricing</a>
-                <a href="gallery.html" class="block px-3 py-2 text-gray-700 hover:text-gold-700 hover:bg-gray-50 rounded-md">Gallery</a>
-                <a href="contact.html" class="block px-3 py-2 text-gold-700 font-medium">Contact Us</a>
+                <a href="index.html" class="block px-3 py-2 text-navy-800 font-medium bg-navy-50 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">About</a>
+                <a href="menu.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Menu</a>
+                <a href="gallery.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Gallery</a>
+                <a href="pricing.html" class="block px-3 py-2 text-gray-600 hover:text-navy-800 hover:bg-gray-50 rounded-md">Pricing</a>
+                <a href="contact.html" class="block px-3 py-2 text-royal-500 font-medium">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -114,16 +118,16 @@
     <!-- Hero Section -->
     <section class="hero-pattern h-screen flex items-center justify-center relative">
         <div class="text-center text-white px-4 max-w-5xl mx-auto fade-in">
-            <p class="text-gold-300 text-lg md:text-xl mb-4 font-medium tracking-widest uppercase">Welcome to Excellence</p>
+            <p class="text-royal-300 text-lg md:text-xl mb-4 font-medium tracking-widest uppercase">Welcome to Excellence</p>
             <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-shadow leading-tight">
                 Taste the Difference<br>
-                <span class="text-gold-300">Savor the Moment</span>
+                <span class="text-royal-300">Savor the Moment</span>
             </h1>
             <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-gray-100 font-light">
                 Premium catering services in Pretoria, crafting unforgettable culinary experiences for weddings, corporate events, and private celebrations.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="menu.html" class="bg-gold-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gold-700 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                <a href="menu.html" class="bg-navy-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-navy-700 transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                     Explore Our Menu
                 </a>
                 <a href="contact.html" class="bg-white/10 backdrop-blur-md border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition">
@@ -144,21 +148,21 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                 <div class="p-6 slide-in-left" style="animation-delay: 0.1s">
                     <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="chef-hat" class="h-8 w-8 text-gold-700"></i>
+                        <i data-lucide="chef-hat" class="h-8 w-8 text-navy-700"></i>
                     </div>
                     <h3 class="font-serif text-2xl font-bold mb-4 text-gray-900">Culinary Excellence</h3>
                     <p class="text-gray-600 leading-relaxed">Our expert chefs craft each dish with passion, using only the finest locally-sourced ingredients to create memorable flavors.</p>
                 </div>
                 <div class="p-6 slide-in-left" style="animation-delay: 0.2s">
                     <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="calendar-heart" class="h-8 w-8 text-gold-700"></i>
+                        <i data-lucide="calendar-heart" class="h-8 w-8 text-navy-700"></i>
                     </div>
                     <h3 class="font-serif text-2xl font-bold mb-4 text-gray-900">Bespoke Events</h3>
                     <p class="text-gray-600 leading-relaxed">From intimate gatherings to grand celebrations, we tailor every detail to reflect your unique vision and style.</p>
                 </div>
                 <div class="p-6 slide-in-left" style="animation-delay: 0.3s">
                     <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="award" class="h-8 w-8 text-gold-700"></i>
+                        <i data-lucide="award" class="h-8 w-8 text-navy-700"></i>
                     </div>
                     <h3 class="font-serif text-2xl font-bold mb-4 text-gray-900">Premium Service</h3>
                     <p class="text-gray-600 leading-relaxed">Experience white-glove service from consultation to cleanup, ensuring your event runs flawlessly.</p>
@@ -168,19 +172,19 @@
     </section>
 
     <!-- About Preview Section -->
-    <section class="py-20 bg-stone-100">
+    <section id="about" class="py-20 bg-stone-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
                     <div class="absolute -top-4 -left-4 w-full h-full bg-gold-200 rounded-2xl"></div>
-                    <img src="http://static.photos/catering/640x360/88" alt="Catering Setup" class="relative rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                    <img src="images/gc.jpg" alt="Catering Setup" class="relative rounded-2xl shadow-2xl w-full object-cover h-[500px]">
                     <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl">
-                        <p class="font-serif text-4xl font-bold text-gold-600">10+</p>
+                        <p class="font-serif text-4xl font-bold text-navy-600">10+</p>
                         <p class="text-gray-600 text-sm uppercase tracking-wider">Years Experience</p>
                     </div>
                 </div>
                 <div>
-                    <p class="text-gold-600 font-semibold mb-2 uppercase tracking-wider">About Us</p>
+                    <p class="text-navy-600 font-semibold mb-2 uppercase tracking-wider">About Us</p>
                     <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">Crafting Culinary Memories in Pretoria</h2>
                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">
                         Uhlelolwenkosi Catering has been serving the Pretoria community with exceptional catering services for over a decade. We specialize in creating bespoke dining experiences that combine traditional flavors with contemporary presentation.
@@ -190,19 +194,19 @@
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex items-center space-x-2">
-                            <i data-lucide="check-circle" class="h-5 w-5 text-gold-600"></i>
+                            <i data-lucide="check-circle" class="h-5 w-5 text-navy-600"></i>
                             <span class="text-gray-700">Customized Menus</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i data-lucide="check-circle" class="h-5 w-5 text-gold-600"></i>
+                            <i data-lucide="check-circle" class="h-5 w-5 text-navy-600"></i>
                             <span class="text-gray-700">Professional Staff</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <i data-lucide="check-circle" class="h-5 w-5 text-gold-600"></i>
+                            <i data-lucide="check-circle" class="h-5 w-5 text-navy-600"></i>
                             <span class="text-gray-700">Fresh Ingredients</span>
                         </div>
                     </div>
-                    <a href="contact.html" class="inline-block mt-8 text-gold-700 font-semibold hover:text-gold-900 flex items-center group">
+                    <a href="contact.html" class="inline-block mt-8 text-navy-700 font-semibold hover:text-navy-900 flex items-center group">
                         Learn More About Us 
                         <i data-lucide="arrow-right" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition"></i>
                     </a>
@@ -215,18 +219,18 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-gold-600 font-semibold mb-2 uppercase tracking-wider">Our Services</p>
+                <p class="text-navy-600 font-semibold mb-2 uppercase tracking-wider">Our Services</p>
                 <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900">Events We Cater</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Wedding -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg card-hover cursor-pointer">
-                    <img src="http://static.photos/wedding/640x360/15" alt="Wedding Catering" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
+                    <img src="images/wed.jpg" alt="Wedding Catering" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8">
                         <h3 class="font-serif text-2xl font-bold text-white mb-2">Weddings</h3>
                         <p class="text-gray-200 mb-4">Elegant receptions and romantic dining experiences tailored to your special day.</p>
-                        <a href="contact.html" class="inline-flex items-center text-gold-300 font-semibold hover:text-white transition">
+                        <a href="contact.html" class="inline-flex items-center text-royal-300 font-semibold hover:text-white transition">
                             Plan Your Wedding <i data-lucide="arrow-right" class="h-4 w-4 ml-2"></i>
                         </a>
                     </div>
@@ -234,11 +238,11 @@
 
                 <!-- Corporate -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg card-hover cursor-pointer">
-                    <img src="http://static.photos/office/640x360/22" alt="Corporate Catering" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
+                    <img src="images/corp.jpg" alt="Corporate Catering" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8">
                         <h3 class="font-serif text-2xl font-bold text-white mb-2">Corporate Events</h3>
                         <p class="text-gray-200 mb-4">Impress clients and colleagues with professional catering for meetings and conferences.</p>
-                        <a href="contact.html" class="inline-flex items-center text-gold-300 font-semibold hover:text-white transition">
+                        <a href="contact.html" class="inline-flex items-center text-royal-300 font-semibold hover:text-white transition">
                             Corporate Inquiry <i data-lucide="arrow-right" class="h-4 w-4 ml-2"></i>
                         </a>
                     </div>
@@ -246,11 +250,11 @@
 
                 <!-- Private -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg card-hover cursor-pointer">
-                    <img src="http://static.photos/event/640x360/33" alt="Private Events" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
+                    <img src="images/gallery4.jpeg" alt="Private Events" class="w-full h-80 object-cover transition transform group-hover:scale-110 duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8">
                         <h3 class="font-serif text-2xl font-bold text-white mb-2">Private Functions</h3>
                         <p class="text-gray-200 mb-4">Birthdays, anniversaries, and celebrations made memorable with exceptional cuisine.</p>
-                        <a href="contact.html" class="inline-flex items-center text-gold-300 font-semibold hover:text-white transition">
+                        <a href="contact.html" class="inline-flex items-center text-royal-300 font-semibold hover:text-white transition">
                             Book Your Event <i data-lucide="arrow-right" class="h-4 w-4 ml-2"></i>
                         </a>
                     </div>
@@ -260,20 +264,20 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gold-900 relative overflow-hidden">
+    <section class="py-20 bg-navy-900 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
-            <img src="http://static.photos/pattern/1200x630/1" alt="Pattern" class="w-full h-full object-cover">
+            <img src="images/pr.jpg" alt="Pattern" class="w-full h-full object-cover">
         </div>
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
             <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Ready to Create Something Delicious?</h2>
-            <p class="text-gold-100 text-xl mb-10 max-w-2xl mx-auto">
+            <p class="text-white text-xl mb-10 max-w-2xl mx-auto">
                 Let us bring your culinary vision to life. Contact us today for a personalized quote and menu consultation.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="bg-white text-gold-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gold-50 transition shadow-xl">
+                <a href="contact.html" class="bg-white text-navy-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gold-50 transition shadow-xl">
                     Get Your Free Quote
                 </a>
-                <a href="tel:+27123456789" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gold-900 transition flex items-center justify-center gap-2">
+                <a href="tel:+27712508413" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-navy-900 transition flex items-center justify-center gap-2">
                     <i data-lucide="phone" class="h-5 w-5"></i>
                     Call Us Now
                 </a>
@@ -287,27 +291,27 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center space-x-2 mb-6">
-                        <i data-lucide="utensils" class="h-8 w-8 text-gold-500"></i>
+                        <i data-lucide="utensils" class="h-8 w-8 text-royal-500"></i>
                         <span class="font-serif text-2xl font-bold">Uhlelolwenkosi</span>
                     </div>
                     <p class="text-gray-400 mb-6 leading-relaxed">
                         Premium catering services in Pretoria, delivering exceptional culinary experiences for every occasion.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold-600 transition">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-navy-600 transition">
                             <i data-lucide="facebook" class="h-5 w-5"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold-600 transition">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-navy-600 transition">
                             <i data-lucide="instagram" class="h-5 w-5"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold-600 transition">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-navy-600 transition">
                             <i data-lucide="twitter" class="h-5 w-5"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="font-serif text-xl font-bold mb-6 text-gold-500">Quick Links</h4>
+                    <h4 class="font-serif text-xl font-bold mb-6 text-royal-500">Quick Links</h4>
                     <ul class="space-y-3">
                         <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
                         <li><a href="menu.html" class="text-gray-400 hover:text-white transition">Our Menu</a></li>
@@ -318,7 +322,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-serif text-xl font-bold mb-6 text-gold-500">Services</h4>
+                    <h4 class="font-serif text-xl font-bold mb-6 text-royal-500">Services</h4>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Wedding Catering</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Corporate Events</a></li>
@@ -329,18 +333,18 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-serif text-xl font-bold mb-6 text-gold-500">Contact Info</h4>
+                    <h4 class="font-serif text-xl font-bold mb-6 text-royal-500">Contact Info</h4>
                     <ul class="space-y-4">
                         <li class="flex items-start space-x-3">
-                            <i data-lucide="map-pin" class="h-5 w-5 text-gold-500 mt-1"></i>
+                            <i data-lucide="map-pin" class="h-5 w-5 text-royal-500 mt-1"></i>
                             <span class="text-gray-400">123 Main Street<br>Pretoria, Gauteng 0001</span>
                         </li>
                         <li class="flex items-center space-x-3">
-                            <i data-lucide="phone" class="h-5 w-5 text-gold-500"></i>
-                            <span class="text-gray-400">+27 12 345 6789</span>
+                            <i data-lucide="phone" class="h-5 w-5 text-royal-500"></i>
+                            <span class="text-gray-400">+27 71 250 8413</span>
                         </li>
                         <li class="flex items-center space-x-3">
-                            <i data-lucide="mail" class="h-5 w-5 text-gold-500"></i>
+                            <i data-lucide="mail" class="h-5 w-5 text-royal-500"></i>
                             <span class="text-gray-400">info@uhlelolwenkosi.co.za</span>
                         </li>
                     </ul>
